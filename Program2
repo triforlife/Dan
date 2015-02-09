@@ -1,0 +1,31 @@
+package main
+
+import "fmt"
+
+type Contact struct {
+	greeting string
+	name1    string
+	name2    string
+}
+
+const (
+	mess1 = "go"
+)
+
+func Greet(person Contact) {
+	fmt.Println(CreateMessage(person.greeting, person.name1, person.name2))
+}
+func CreateMessage(greeting, name1 string, name2 string) (string, string, string) {
+	return greeting + " " + name1 + ". ", "Hey, " + name2, ", how are you?"
+}
+func main() {
+	var t = Contact{"Good to see you,", "Steph", "Tarah"}
+	Greet(t)
+	u := Contact{"I am glad you are home,", "Tarah", "Steph"}
+	Greet(u)
+	v := Contact{}
+	v.greeting = "Let's " + mess1 + " to the store."
+	v.name1 = "Alaric"
+	v.name2 = "Eli"
+	Greet(v)
+}
