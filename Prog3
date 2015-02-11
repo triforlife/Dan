@@ -1,0 +1,67 @@
+// Prog3.go
+// funcs that accept funcs as args, funcs that return funcs, if, if else, switch
+
+package main
+
+import "fmt"
+
+type Contact struct {
+	greeting string
+	name     string
+}
+
+func Greet(contact Contact, myWassa func(string)) {
+	myGreetingMas, myNameMas := CreateMessage(contact.name, contact.greeting, "howdy")
+
+	myWassa(myGreetingMas)
+	myWassa(myNameMas)
+}
+func CreateMessage(name string, greeting ...string) (myGreeting string, myName string) {
+	myGreeting = greeting[1] + " " + name
+	myName = "\nHey, " + name + "\n"
+	return
+}
+
+func myPrint(s string) {
+	fmt.Print(s)
+}
+
+func myPrintln(s string) {
+	fmt.Println(s)
+}
+
+func main() {
+
+	l := "family"
+	if l == "family" {
+		fmt.Println("You are in the family.")
+	} else {
+		fmt.Println("You are in a different family.")
+	}
+
+	m := "Billy"
+	switch m {
+	case "Bill":
+		fmt.Println("Johnny is your son.")
+	case "Johnny":
+		fmt.Println("Rene is your sister.")
+	case "Billy":
+		fmt.Println(m + ", Debbie is your sister.")
+	case "Rene":
+		fmt.Println("Johnny is your brother.")
+	case "Debbie":
+		fmt.Println("Bill is your dad.")
+	case "Mike":
+		fmt.Println("Debbie is your wife.")
+	default:
+		fmt.Println("Your not in this family.")
+	}
+	var t = Contact{"Good to see you,", "Tarah"}
+	Greet(t, myPrint)
+	u := Contact{"Glad you're in class,", "Stephanie"}
+	Greet(u, myPrint)
+	v := Contact{}
+	v.greeting = "We're learning great things,"
+	v.name = "Eli"
+	Greet(v, myPrintln)
+}
