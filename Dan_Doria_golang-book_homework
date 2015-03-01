@@ -1,0 +1,23 @@
+// FtoC
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	f1 := 54
+	f2 := 68
+	f3 := 78
+	f4 := 32
+
+	var c1 int = (f1 - 32) * 5 / 9
+	var c2 int = (f2 - 32) * 5 / 9
+	var c3 int = (f3 - 32) * 5 / 9
+	var c4 int = (f4 - 32) * 5 / 9
+
+	fmt.Println(f1, " farhenheit is ", c1, " celsius")
+	fmt.Println(f2, " farhenheit is ", c2, " celsius")
+	fmt.Println(f3, " farhenheit is ", c3, " celsius")
+	fmt.Println(f4, " farhenheit is ", c4, " celsius")
+}
