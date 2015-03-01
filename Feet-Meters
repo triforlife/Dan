@@ -1,0 +1,24 @@
+// Ft-M
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	var f1 float32 = 54
+	var f2 float32 = 68
+	var f3 float32 = 78
+	var f4 float32 = 32
+	const c float32 = 0.3048
+
+	var m1 float32 = (f1 * c)
+	var m2 float32 = (f2 * c)
+	var m3 float32 = (f3 * c)
+	var m4 float32 = (f4 * c)
+
+	fmt.Println(f1, " feet is ", m1, " meters")
+	fmt.Println(f2, " feet is ", m2, " meters")
+	fmt.Println(f3, " feet is ", m3, " meters")
+	fmt.Println(f4, " feet is ", m4, " meters")
+}
