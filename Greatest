@@ -1,0 +1,19 @@
+// Greatest
+package main
+
+import (
+	"fmt"
+)
+
+func greatest(args ...int) int {
+	temp := 0
+	for i := 0; i < len(args); i++ {
+		if args[i] > temp {
+			temp = args[i]
+		}
+	}
+	return temp
+}
+func main() {
+	fmt.Println(greatest(1, 21, 53, 12, 99, 5))
+}
