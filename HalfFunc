@@ -1,0 +1,20 @@
+// HalfFunc
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	a := 12
+	b := 25
+	half(a)
+	half(b)
+}
+func half(x int) {
+	if x%2 == 0 {
+		fmt.Println(x/2, "true")
+	} else {
+		fmt.Println(x/2, "false")
+	}
+}
