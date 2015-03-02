@@ -1,0 +1,146 @@
+// ch13
+package main
+
+import (
+	"fmt"
+	"strings"
+	"os"
+	"io/ioutil"
+	"path/filepath"
+	"errors"
+	"sort"
+	"hash/crc32"
+	"crypto/sha1"
+	"encoding/gob"
+	"net/http"
+	"math/rand"
+)
+
+func hello(res http.ResponseWriter, req *http.Request) {
+    res.Header().Set(
+        "Content-Type", 
+        "text/html",
+    )
+    io.WriteString(
+        res, 
+        `<doctype html>
+<html>
+    <head>
+        <title>Hello World</title>
+    </head>
+    <body>
+        Hello World!
+    </body>
+</html>`,
+    )
+}
+
+func main() {
+	fmt.Println(    
+        // true
+        strings.Contains("test", "es"), 
+
+        // 2
+        strings.Count("test", "t"),
+
+        // true
+        strings.HasPrefix("test", "te"), 
+
+        // true
+        strings.HasSuffix("test", "st"), 
+
+        // 1
+        strings.Index("test", "e"), 
+
+        // "a-b"
+        strings.Join([]string{"a","b"}, "-"),
+
+        // == "aaaaa"
+        strings.Repeat("a", 5), 
+
+        // "bbaa"
+        strings.Replace("aaaa", "a", "b", 2),
+
+        // []string{"a","b","c","d","e"}
+        strings.Split("a-b-c-d-e", "-"), 
+
+        // "test"
+        strings.ToLower("TEST"), 
+
+        // "TEST"
+        strings.ToUpper("test"), 
+		file, err := os.Open("test.txt")
+    if err != nil {
+        // handle the error here
+        return
+    }
+    defer file.Close()
+    
+    // get the file size
+    stat, err := file.Stat()
+    if err != nil {
+        return
+    }
+    // read the file
+    bs := make([]byte, stat.Size())
+    _, err = file.Read(bs)
+    if err != nil {
+        return
+    }
+
+    str := string(bs)
+    fmt.Println(str)
+	
+	bs, err := ioutil.ReadFile("test.txt")
+    if err != nil {
+        return
+    }
+    str := string(bs)
+    fmt.Println(str)
+	file, err := os.Create("test.txt")
+    if err != nil {
+        // handle the error here
+        return
+    }
+    defer file.Close()
+
+    file.WriteString("test")
+	func main() {
+    filepath.Walk(".", func(path string, info os.FileInfo, err error) error {
+        fmt.Println(path)
+        return nil
+		err := errors.New("error message")
+	h := crc32.NewIEEE()
+    h.Write([]byte("test"))
+    v := h.Sum32()
+    fmt.Println(v)
+	 h := sha1.New()
+    h.Write([]byte("test"))
+    bs := h.Sum([]byte{})
+    fmt.Println(bs)
+	
+	http.HandleFunc("/hello", hello)
+    http.ListenAndServe(":9000", nil)
+	
+	// Define flags
+    maxp := flag.Int("max", 6, "the max value")
+    // Parse
+    flag.Parse()
+    // Generate a number between 0 and max
+    fmt.Println(rand.Intn(*maxp))
+	
+	m := new(sync.Mutex)
+    
+    for i := 0; i < 10; i++ {
+        go func(i int) {
+            m.Lock()
+            fmt.Println(i, "start")
+            time.Sleep(time.Second)
+            fmt.Println(i, "end")
+            m.Unlock()
+        }(i)
+    }
+
+    var input string
+    fmt.Scanln(&input)
+}
