@@ -1,0 +1,37 @@
+// Pro2-23
+package main
+
+import (
+	"fmt"
+	"github.com/goestoeleven/math"
+)
+
+type Message string
+
+func (s Message) mePrint() string {
+	return "METHOD: Printing..."
+}
+func main() {
+	nSlce := []int{113, 142, 157}
+	num := math.Sum(nSlce)
+	aSlce := []int{5, 10, 12, 30, 39, 45}
+	mTSlce := []int{65, 77, 88}
+	aSlce = append(mSlice, mTSlce...)
+	
+	fmt.Println(num)
+	
+	for i, cEntry := range aSlce {
+		fmt.Println(i, " - ", cEntry)
+	}
+	
+	fmt.Println("")
+	
+	aSlce = append(mSlice[:4], mSlice[5:]...)
+	
+	for i, cEntry := range aSlce {
+		fmt.Println(i, " - ", cEntry)
+	}
+	
+	var message Message = "Testing..."
+	fmt.Println(message.mePrint())
+}
